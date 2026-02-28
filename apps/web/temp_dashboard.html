@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zebra AI - Dashboard</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts for Clean Sans-Serif -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-typography">
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .tracking-widest-extra {
+      letter-spacing: 0.15em;
+    }
+  </style>
+<style data-purpose="background-effects">
+    /* Custom background gradient for liquid glass depth as requested */
+    .liquid-bg {
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05) 0%, rgba(10, 10, 10, 1) 70%, rgba(0, 0, 0, 1) 100%);
+    }
+    
+    /* Subtle glow for cards on hover */
+    .card-glow:hover {
+      box-shadow: 0 10px 40px rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body class="bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-white/10 via-black to-black text-[#FAFAFA] min-h-screen relative overflow-x-hidden">
+<!-- BEGIN: Background Layer -->
+<div aria-hidden="true" class="fixed inset-0 z-0 liquid-bg opacity-60 pointer-events-none"></div>
+<!-- END: Background Layer -->
+<!-- BEGIN: Main Content Container -->
+<main class="relative z-10 flex flex-col items-center justify-center min-h-screen p-6">
+<!-- BEGIN: Brand Header -->
+<header class="mb-12 text-center" data-purpose="brand-header">
+<h1 class="text-3xl font-light tracking-widest-extra uppercase text-white/40">Zebra AI</h1>
+</header>
+<!-- END: Brand Header -->
+<!-- BEGIN: Action Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full" data-purpose="dashboard-grid">
+<!-- Card 1: LinkedIn Import -->
+<div class="group bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-3xl p-12 flex flex-col items-center justify-center gap-6 transition-all duration-500 cursor-pointer hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]" data-purpose="action-card">
+<div class="text-white/90 group-hover:text-white transition-colors">
+<!-- DownloadCloud Icon -->
+<svg fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+<path d="M12 12v9"></path>
+<path d="m8 17 4 4 4-4"></path>
+</svg>
+</div>
+<span class="text-lg font-light tracking-wide text-white/90 group-hover:text-white transition-colors">LinkedIn Import</span>
+</div>
+<!-- Card 2: Fix Old Resume -->
+<div class="group bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-3xl p-12 flex flex-col items-center justify-center gap-6 transition-all duration-500 cursor-pointer hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]" data-purpose="action-card">
+<div class="text-white/90 group-hover:text-white transition-colors">
+<!-- Wand2 Icon -->
+<svg fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+<path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
+<path d="m14 7 3 3"></path>
+<path d="M5 6v4"></path>
+<path d="M19 14v4"></path>
+<path d="M10 2v2"></path>
+<path d="M7 8H3"></path>
+<path d="M21 16h-4"></path>
+<path d="M11 3H9"></path>
+</svg>
+</div>
+<span class="text-lg font-light tracking-wide text-white/90 group-hover:text-white transition-colors">Fix Old Resume</span>
+</div>
+<!-- Card 3: Build From Scratch -->
+<div class="group bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-3xl p-12 flex flex-col items-center justify-center gap-6 transition-all duration-500 cursor-pointer hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]" data-purpose="action-card">
+<div class="text-white/90 group-hover:text-white transition-colors">
+<!-- Blocks Icon -->
+<svg fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+<rect height="7" rx="1" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1" width="7" x="3" y="14"></rect>
+<rect height="7" rx="1" width="7" x="14" y="14"></rect>
+<path d="M3 9V3.5A.5.5 0 0 1 3.5 3H9"></path>
+<path d="M5 10V5h5"></path>
+</svg>
+</div>
+<span class="text-lg font-light tracking-wide text-white/90 group-hover:text-white transition-colors">Build From Scratch</span>
+</div>
+<!-- Card 4: Tailor to JD -->
+<div class="group bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-3xl p-12 flex flex-col items-center justify-center gap-6 transition-all duration-500 cursor-pointer hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]" data-purpose="action-card">
+<div class="text-white/90 group-hover:text-white transition-colors">
+<!-- FileSearch Icon -->
+<svg fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 22V4a2 2 0 0 1 2-2h8.5L20 7.5V22H4Z"></path>
+<path d="M14 2v6h6"></path>
+<circle cx="11.5" cy="13.5" r="2.5"></circle>
+<path d="m16 18-2.7-2.7"></path>
+</svg>
+</div>
+<span class="text-lg font-light tracking-wide text-white/90 group-hover:text-white transition-colors">Tailor to JD</span>
+</div>
+</div>
+<!-- END: Action Grid -->
+<!-- BEGIN: Footer Branding -->
+<footer class="mt-16 text-white/20 text-xs font-light tracking-widest" data-purpose="footer">
+      © 2024 ZEBRA AI. ALL RIGHTS RESERVED.
+    </footer>
+<!-- END: Footer Branding -->
+</main>
+<!-- END: Main Content Container -->
+</body></html>

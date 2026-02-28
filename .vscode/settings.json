@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "c:\\zebra\\services\\worker\\.venv\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "services/worker/src"
+    ],
+    "python.terminal.useEnvFile": true
+}

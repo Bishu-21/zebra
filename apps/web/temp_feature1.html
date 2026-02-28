@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Import LinkedIn Profile | Zebra AI</title>
+<!-- BEGIN: Tailwind CSS & Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            zebra: {
+              black: '#0A0A0A',
+              border: 'rgba(255, 255, 255, 0.2)',
+              surface: 'rgba(255, 255, 255, 0.02)',
+              'surface-hover': 'rgba(255, 255, 255, 0.06)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Tailwind CSS & Config -->
+<!-- BEGIN: Custom Typography Styles -->
+<style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<!-- END: Custom Typography Styles -->
+</head>
+<body class="bg-[#0A0A0A] text-white min-h-screen flex flex-col items-center justify-center p-6">
+<!-- BEGIN: Header Section -->
+<header class="text-center mb-12 flex flex-col items-center gap-4" data-purpose="page-header">
+<h1 class="text-4xl md:text-5xl font-light tracking-tight text-white">
+      Import LinkedIn Profile
+    </h1>
+<p class="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed">
+      Drop your exported PDF here. Our AI will parse and rebuild your career timeline instantly.
+    </p>
+</header>
+<!-- END: Header Section -->
+<!-- BEGIN: Main Upload Area -->
+<main class="w-full max-w-3xl" data-purpose="upload-container">
+<!-- Drag & Drop Zone -->
+<div class="relative group aspect-[21/9] w-full flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-white/20 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/50 hover:scale-[1.02] transition-all duration-500 cursor-pointer" data-purpose="interactive-drop-zone" id="drop-zone">
+<!-- Lucide-style FileDown Icon -->
+<div class="mb-6 text-white/50 group-hover:text-white/80 transition-colors duration-300">
+<svg fill="none" height="64" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewbox="0 0 24 24" width="64" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+<polyline points="7 10 12 15 17 10"></polyline>
+<line x1="12" x2="12" y1="15" y2="3"></line>
+</svg>
+</div>
+<!-- Instruction Text -->
+<div class="flex flex-col items-center gap-3">
+<p class="text-white/80 text-xl font-medium tracking-tight">
+          Drag &amp; drop your LinkedIn PDF here
+        </p>
+<span class="text-white/40 text-sm font-light uppercase tracking-widest">or</span>
+<button class="mt-2 bg-white/10 border border-white/10 hover:bg-white/20 px-8 py-3 rounded-xl text-white font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" type="button">
+          Browse Files
+        </button>
+</div>
+<!-- Hidden File Input -->
+<input accept=".pdf" class="hidden" id="file-input" type="file"/>
+</div>
+<!-- Additional Info / Help -->
+<footer class="mt-8 text-center" data-purpose="upload-footer">
+<p class="text-white/30 text-sm">
+        Need help finding your PDF? <a class="text-white/50 hover:text-white underline underline-offset-4 transition-colors" href="#">Follow this guide</a>
+</p>
+</footer>
+</main>
+<!-- END: Main Upload Area -->
+<!-- BEGIN: Interactive Logic -->
+<script data-purpose="drag-and-drop-handlers">
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+
+    // Trigger file input on click
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    // Prevent default behaviors for drag events
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, false);
+    });
+
+    // Handle Drag Visual States
+    dropZone.addEventListener('dragenter', () => {
+      dropZone.classList.add('bg-white/[0.08]', 'border-white/60');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('bg-white/[0.08]', 'border-white/60');
+    });
+
+    // Handle File Selection
+    dropZone.addEventListener('drop', (e) => {
+      dropZone.classList.remove('bg-white/[0.08]', 'border-white/60');
+      const files = e.dataTransfer.files;
+      if (files.length) {
+        handleFiles(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length) {
+        handleFiles(e.target.files[0]);
+      }
+    });
+
+    function handleFiles(file) {
+      if (file.type === 'application/pdf') {
+        console.log('Processing LinkedIn PDF:', file.name);
+        // Add loading state logic here
+      } else {
+        alert('Please upload a PDF file.');
+      }
+    }
+  </script>
+<!-- END: Interactive Logic -->
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tailor to Job Description</title>
+<!-- BEGIN: Scripts and Configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'pitch-black': '#0A0A0A',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Scripts and Configuration -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="custom-animations">
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    /* Glow effect for the AI nodes */
+    .glow-dot {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-pitch-black min-h-screen font-sans text-white overflow-x-hidden">
+<!-- BEGIN: Main Application Container -->
+<main class="relative min-h-screen flex flex-col p-8 md:p-16" data-purpose="page-wrapper" id="app-root">
+<!-- BEGIN: Header Section -->
+<header class="mb-16 max-w-4xl mx-auto w-full" data-purpose="header">
+<h1 class="text-white text-4xl md:text-5xl font-light tracking-tight mb-2">
+        Tailor to Job Description
+      </h1>
+<p class="text-white/60 text-lg md:text-xl font-light">
+        Paste the JD. Match the keywords. Beat the ATS.
+      </p>
+</header>
+<!-- END: Header Section -->
+<!-- BEGIN: Core Tool Layout -->
+<div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row items-center justify-center gap-12" data-purpose="tool-container">
+<!-- BEGIN: Left Column (Input Area) -->
+<section class="w-full md:flex-1" data-purpose="input-section">
+<textarea class="w-full h-80 bg-white/[0.02] border border-dashed border-white/20 rounded-2xl p-8 text-white/80 text-lg leading-relaxed focus:outline-none focus:border-white/50 focus:bg-white/[0.04] transition-all duration-500 resize-none placeholder:text-white/20" data-purpose="jd-textarea" placeholder="Paste the Job Description here..."></textarea>
+</section>
+<!-- END: Left Column -->
+<!-- BEGIN: Right Column (AI Visual & Action) -->
+<section class="flex flex-col items-center gap-10 min-w-[240px]" data-purpose="action-section">
+<!-- AI Visualization Container -->
+<div class="relative flex items-center justify-center" data-purpose="ai-nodes-visual">
+<!-- Central Icon -->
+<div class="relative z-10 text-white/90 animate-float">
+<svg class="lucide lucide-file-text" fill="none" height="64" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewbox="0 0 24 24" width="64" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path>
+</svg>
+</div>
+<!-- Pulsing Dots (AI Nodes) -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<!-- Node Top -->
+<div class="absolute -top-6 w-2 h-2 bg-white rounded-full glow-dot animate-pulse-slow"></div>
+<!-- Node Bottom Left -->
+<div class="absolute -bottom-4 -left-8 w-2 h-2 bg-white/60 rounded-full glow-dot animate-pulse" style="animation-delay: 1s;"></div>
+<!-- Node Bottom Right -->
+<div class="absolute -bottom-8 right-0 w-2 h-2 bg-white/40 rounded-full glow-dot animate-pulse-slow" style="animation-delay: 2s;"></div>
+<!-- Node Far Left -->
+<div class="absolute left-[-50px] top-4 w-1.5 h-1.5 bg-white/30 rounded-full glow-dot animate-pulse" style="animation-delay: 1.5s;"></div>
+</div>
+</div>
+<!-- Call to Action -->
+<button class="group relative flex items-center gap-3 bg-white text-black px-8 py-4 rounded-xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] active:scale-95" data-purpose="submit-button">
+<svg class="lucide lucide-target" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle>
+</svg>
+          Tailor Resume
+        </button>
+</section>
+<!-- END: Right Column -->
+</div>
+<!-- END: Core Tool Layout -->
+<!-- BEGIN: Background Atmosphere -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+<!-- Subtle radial gradient for depth -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-white/[0.02] rounded-full blur-[120px]"></div>
+</div>
+<!-- END: Background Atmosphere -->
+</main>
+<!-- END: Main Application Container -->
+<!-- BEGIN: Interactive Logic -->
+<script data-purpose="reveal-animations">
+    // Simple implementation of Framer Motion-like fade in
+    document.addEventListener('DOMContentLoaded', () => {
+      const main = document.getElementById('app-root');
+      main.style.opacity = '0';
+      main.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+      main.style.transform = 'translateY(10px)';
+      
+      requestAnimationFrame(() => {
+        main.style.opacity = '1';
+        main.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+<!-- END: Interactive Logic -->
+</body></html>

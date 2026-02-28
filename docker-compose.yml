@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./services/worker
+    container_name: zebra-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgres://zebra:zebra@postgres:5432/zebra
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - postgres
+    command: [ "uv", "run", "python", "-m", "src.main" ]
+
+  worker:
+    build:
+      context: ./services/worker
+    container_name: zebra-worker
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgres://zebra:zebra@postgres:5432/zebra
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - postgres
+    command: [ "uv", "run", "python", "-m", "src.worker" ]
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: zebra-postgres
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: zebra
+      POSTGRES_PASSWORD: zebra
+      POSTGRES_DB: zebra
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U zebra -d zebra_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: zebra-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:
